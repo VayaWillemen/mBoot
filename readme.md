@@ -6,6 +6,10 @@ The 'mBoot' is a joystick-controlled boat, built with an mBot. Both the mBot and
 
 ## Preparing the mBot
 
+## packages
+pip install cython
+pip install pyserial
+pip install hidapi
 
 ## Running the python program
 
