@@ -11,6 +11,8 @@ pip install cython
 pip install pyserial
 pip install hidapi
 
+pip install pygame
+
 ## Running the python program
 
 
