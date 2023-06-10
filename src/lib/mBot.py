@@ -260,5 +260,4 @@ class mBot():
         return [ord(val[0]),ord(val[1]),ord(val[2]),ord(val[3])]
 
     def short2bytes(self,sval):
-        val = struct.pack("h",sval)
-        return [ord(val[0]),ord(val[1])]
+        return [sval & 0xff, (sval & 0xff00) >> 8]

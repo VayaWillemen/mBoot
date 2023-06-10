@@ -28,6 +28,8 @@ if __name__ == '__main__':
                 #bot.writePackage(bytearray([0xff,0x55,0x7,0x0,0x2,0x5,0xa0,0xff,0x00,0x00])) #left, half speed forward
                 #bot.writePackage(bytearray([0xff,0x55,0x7,0x0,0x2,0x5,0xd0,0xff,0x00,0x00])) #left, creeping forward
 
+                bot.doMove( 0, 0)
+                sleep(1)
                 bot.doMove( 63, 63)
                 sleep(1)
                 bot.doMove( 127, 127)
