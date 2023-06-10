@@ -31,6 +31,17 @@ if __name__ == '__main__':
                         pygame.quit()
                         exit()
                 
-        speed = -joystick.get_axis(2)
+        speed = -joystick.get_axis(AXIS_THROTTLE_UPDOWN)
+        turn = joystick.get_axis(AXIS_THROTTLE_BUTTONS)
+
+        speedLeft = speed
+        if( turn < 0 ):
+                speedLeft += 2 * turn * speed
+
+        speedRight = speed
+        if( turn > 0):
+                speedRight -= 2 * turn * speed
+
+        print( "speed: " + str(speed) + " -- turn: " + str(turn) + " => speedLeft: " + str(speedLeft) + " -- speedRight: " + str(speedRight))
         
-        bot.doMove( (int)(speed * 255), (int)(speed * 255))
+        bot.doMove( (int)(speedLeft * 255), (int)(speedRight * 255))
