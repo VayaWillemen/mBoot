@@ -1,4 +1,5 @@
 from lib.mBot import *
+from datetime import datetime
 import pygame
 
 def FindJoystick():
@@ -41,6 +42,7 @@ BUTTON_GAMEPAD_RIGHT_THUMB_1 = 0
 
 # True if the button was released (to detect edges)
 buttonReleased = False
+bubblesPlaying = False
 
 if __name__ == '__main__':
 
@@ -50,6 +52,7 @@ if __name__ == '__main__':
     joystick = FindJoystick()
     
     # Inittilize axis, buttons and sounds, depending on which joystick is being used
+    bubblesSound = pygame.mixer.Sound("bubbles.mp3")
     if( joystick.get_name().upper().startswith("T.FLIGHT")):
         axis_throttle = AXIS_TRUSTMASTER_THROTTLE_UPDOWN
         axis_turn = AXIS_TRUSTMASTER_THROTTLE_BUTTONS
@@ -80,7 +83,12 @@ if __name__ == '__main__':
                 if( buttonReleased ):
                         pygame.mixer.Sound.play(toetSound)
                 buttonReleased = False
-  
+
+        if( datetime.now().second == 50 ):
+                bubblesPlaying = False
+        if( not bubblesPlaying and datetime.now().second == 0):
+                bubblesPlaying = True
+                pygame.mixer.Sound.play(bubblesSound)
 
         # Calculate the sped of each wheel
         speed = -joystick.get_axis(axis_throttle)
